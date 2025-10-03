@@ -1,0 +1,54 @@
+# ## Tarea 2: McCulloch-Pitts
+### Operación OR
+Notebook 1: Operación OR
+import numpy as np
+
+# Entradas posibles
+entradas = np.array([
+    [0,0],
+    [0,1],
+    [1,0],
+    [1,1]
+])
+
+# Pesos y umbral
+pesos = np.array([1,1])
+umbral = 1
+
+# Función de activación
+def mc_or(x):
+    return 1 if np.dot(x, pesos) >= umbral else 0
+
+# Resultados
+for x in entradas:
+    print(f"Entrada: {x}, Salida: {mc_or(x)}")
+Entrada: [0 0], Salida: 0
+Entrada: [0 1], Salida: 1
+Entrada: [1 0], Salida: 1
+Entrada: [1 1], Salida: 1
+Explicación de McCulloch-Pitts para OR "La neurona McCulloch-Pitts recibe dos entradas binarias.
+Si la suma ponderada de las entradas alcanza el umbral (≥1), la salida es 1. Esto representa la operación lógica OR."
+
+## Tarea 2: McCulloch-Pitts
+### Operación NOT
+Notebook 2: Operación NOT
+# McCulloch-Pitts para NOT
+import numpy as np
+
+# Entradas posibles
+entradas = np.array([0,1])
+
+# Peso y umbral
+peso = -1
+umbral = 0
+
+def mc_not(x):
+    return 1 if (x * peso) >= umbral else 0
+
+# Resultados
+for x in entradas:
+    print(f"Entrada: {x}, Salida: {mc_not(x)}")
+Entrada: 0, Salida: 1
+Entrada: 1, Salida: 0
+Explicación de Operación NOT "La neurona McCulloch-Pitts recibe una entrada binaria. Con peso negativo y umbral en 0, 
+la entrada es 1 la salida es 0, y cuando la entrada es 0 la salida es 1. Esto simula la operación lógica NOT."
