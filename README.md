@@ -1,0 +1,58 @@
+Tarea 3 Perpectron
+# Tarea 3: Perceptrón
+## Operación OR
+# Perceptrón para la operación OR
+
+import numpy as np
+
+# Datos de entrada (x1, x2)
+entradas = np.array([
+    [0,0],
+    [0,1],
+    [1,0],
+    [1,1]
+])
+
+# Salidas esperadas (OR)
+salidas_esperadas = np.array([0,1,1,1])
+
+# Inicialización de pesos y tasa de aprendizaje
+pesos = np.random.rand(2)
+sesgo = np.random.rand()
+tasa_aprendizaje = 0.1
+
+# Función de activación (escalón)
+def activacion(x):
+    return 1 if x >= 0 else 0
+
+# Entrenamiento
+for epoca in range(10):
+    for i in range(len(entradas)):
+        entrada = entradas[i]
+        salida_real = salidas_esperadas[i]
+        suma = np.dot(entrada, pesos) + sesgo
+        salida_predicha = activacion(suma)
+        error = salida_real - salida_predicha
+
+        # Ajuste de pesos y sesgo
+        pesos += tasa_aprendizaje * error * entrada
+        sesgo += tasa_aprendizaje * error
+
+print("Pesos finales:", pesos)
+print("Sesgo final:", sesgo)
+
+# Pruebas
+for entrada in entradas:
+    salida = activacion(np.dot(entrada, pesos) + sesgo)
+    print(f"Entrada: {entrada}, Salida: {salida}")
+Resultados:
+Pesos finales: [0.1771853  0.16778907]
+Sesgo final: -0.09737038056542802
+Entrada: [0 0], Salida: 0
+Entrada: [0 1], Salida: 1
+Entrada: [1 0], Salida: 1
+Entrada: [1 1], Salida: 1
+# Explicación
+El perceptrón recibe dos entradas binarias y ajusta sus pesos mediante aprendizaje supervisado.
+Durante el entrenamiento, compara su salida con la deseada (tabla OR) y corrige sus pesos hasta que la salida sea correcta.
+Finalmente, el perceptrón logra clasificar correctamente la operación OR.
