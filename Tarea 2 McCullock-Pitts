@@ -1,0 +1,30 @@
+Notebook 1: Operación OR
+# McCulloch-Pitts para OR
+import numpy as np
+
+# Entradas posibles
+entradas = np.array([
+    [0,0],
+    [0,1],
+    [1,0],
+    [1,1]
+])
+
+# Pesos y umbral
+pesos = np.array([1,1])
+umbral = 1
+
+# Función de activación
+def mc_or(x):
+    return 1 if np.dot(x, pesos) >= umbral else 0
+
+# Resultados
+for x in entradas:
+    print(f"Entrada: {x}, Salida: {mc_or(x)}")
+
+Entrada: [0 0], Salida: 0
+Entrada: [0 1], Salida: 1
+Entrada: [1 0], Salida: 1
+Entrada: [1 1], Salida: 1
+Explicación de McCulloch-Pitts para OR "La neurona McCulloch-Pitts recibe dos entradas binarias. 
+Si la suma ponderada de las entradas alcanza el umbral (≥1), la salida es 1. Esto representa la operación lógica OR."
